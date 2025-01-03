@@ -18,7 +18,7 @@ docker exec -it python-distroless-container sh  # this will not work as distrole
 cdebug exec -it --image=nixery.dev/shell/vim/ps/tshark/curl python-distroless-container
 
 #  will use cdebug to debug distroless image on k8s
- cdebug exec --namespace=default --image=nixery.dev/shell/vim/ps/tshark/curl -it pod/<pod-name>
+ cdebug exec --namespace=default --image=alpine -it pod/<pod-name>
 
 # to check which Ephermal container is running on k8s
 kubectl describe pods/<pod-name>
