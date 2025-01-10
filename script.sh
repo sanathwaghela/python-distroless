@@ -16,8 +16,6 @@ docker exec -it python-container sh
 # to debug distroless image
 docker exec -it python-distroless-container sh  # this will not work as distroless image does not have shell
 
-# to debug distroless image with debug tag
-docker exec -it python-distroless-debug-container sh
 
 # will use cdebug to debug distroless image on docker 
 cdebug exec -it --image=nixery.dev/shell/vim/ps/tshark/curl python-distroless-container
@@ -27,7 +25,10 @@ cdebug exec -it --image=nixery.dev/shell/vim/ps/tshark/curl python-distroless-co
 
 #  will use kubectl to debug distroless image on kubernetes
 
-kubectl debug -it podname --image=alpine --target=python-distroless
+kubectl debug -it <podname> --image=alpine --target=python-distroless
 
 # to check which Ephermal container is running on k8s
 kubectl describe pods/<pod-name>
+
+# to debug distroless image with debug tag
+docker exec -it python-distroless-debug-container sh
