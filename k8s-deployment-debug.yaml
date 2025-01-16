@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+ name: python-distroless-debug
+ labels:
+   app: python-distroless-debug
+   tier: frontend
+   version: v1
+spec:
+ selector:
+   matchLabels:
+     app: python-distroless-debug
+     tier: frontend
+     version: v1
+ replicas: 1
+ template:
+   metadata:
+     labels:
+       app: python-distroless-debug
+       tier: frontend
+       version: v1
+   spec:
+     terminationGracePeriodSeconds: 100
+     containers:
+     - name: python-distroless-debug
+       image: "python-distroless:debug"
+       imagePullPolicy: Never
+       resources:
+         limits:
+           cpu: "1000m"
+           memory: 1500Mi
+         requests:
+           cpu: 500m
+           memory: 700Mi
